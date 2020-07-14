@@ -1,0 +1,49 @@
+h1 Silling
+
+p
+  form action='add' method='post' id='form'
+    | Date:
+    input type='date' name='date'
+    br
+
+    | Category:
+    input type='text' name='category'
+    br
+
+    | Note:
+    input type='text' name='note'
+    br
+
+    | Amount:
+    input type='number' name='amount'
+    br
+
+    input type="submit" value="Add"
+
+p
+  input.simplebtn type="button" value="100"
+  input.simplebtn type="button" value="110"
+  input.simplebtn type="button" value="120"
+  input.simplebtn type="button" value="130"
+  input.simplebtn type="button" value="140"
+  br
+  input.simplebtn type="button" value="150"
+  input.simplebtn type="button" value="160"
+
+div
+  - db.read.each do |line|
+    = line
+    br
+
+//p
+//  form action='clear' method='post'
+//    input type="submit" value="Clear"
+
+javascript:
+  $(function(){
+    var form = $('#form');
+    $(".simplebtn").click(function(){
+      form.find('input[name=amount]').val(this.value);
+      form.submit();
+    });
+  });
